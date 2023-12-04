@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation -Toys and Users</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        .strip {
+            height: 250px;
+            width: 100%;
+            background-image: url(pexels-cottonbro-studio-3826678.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+
+
+        .sidebar {
+            background: #f8f9fa;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            height: 100vh;
+            padding-top: 20px;
+
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Toys Api</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#users">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#toys">Toys</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="strip"></div>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+                <h2>Requests</h2>
+                <div class="list-group">
+
+                    <a href="#users" class="list-group-item list-group-item-action"><strong>USERS</strong></a>
+                    <a href="#get_userList" class="list-group-item list-group-item-action">GET user lists</a>
+                    <a href="#signIn" class="list-group-item list-group-item-action">POST sign in</a>
+                    <a href="#login" class="list-group-item list-group-item-action">POST login</a>
+
+                    <a href="#toys" class="list-group-item list-group-item-action"><strong>TOYS</strong></a>
+                    <a href="#get_all_toys" class="list-group-item list-group-item-action">GET all toys</a>
+                    <a href="#search" class="list-group-item list-group-item-action">GET search</a>
+                    <a href="#search_by_category" class="list-group-item list-group-item-action">GET Toy by category</a>
+                    <a href="#get_toy_by_id" class="list-group-item list-group-item-action">GET Toy by id</a>
+                    <a href="#get_min_max" class="list-group-item list-group-item-action">GET min max</a>
+                    <a href="#add_toy" class="list-group-item list-group-item-action">POST add toy</a>
+                    <a href="#update_toy" class="list-group-item list-group-item-action">PUT update toy</a>
+                    <a href="#delete_toy" class="list-group-item list-group-item-action">DELETE delete toy</a>
+                </div>
+            </nav>
+
+
+            <!-- Main Content -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 main-content">
+                <div class="container  mb-3">
+                    <div class="mb-5">
+                        <h1 class="text-center font-weight-bolder">TOYS API</h1>
+                    </div>
+                    <p>
+                        Through these requests it is possible to <b>register</b> and <b>connect</b> and receive the
+                        user's
+                        personal information.
+                        admin can delete users or himself by id and user can delete himself.
+                        admin can get all users list info and use <b>queries</b> to edit the result
+                        (perPage,page,sort,reverse).
+                    </p>
+                </div>
+
+                <section id="users">
+                    <h2>Users</h2>
+                    <div id="get_userList" class="card mb-4">
+                        <div class="card-header">
+                            <span>
+                                <h5 class="d-inline">Get </h5><a href="#"> /users/usersList</a>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            Get list of all users - by token admin.
+                        </div>
+                    </div>
+                    <div id="create_user" class="card mb-4">
+                        <div class="card-header">
+                            <span>
+                                <h5 class="d-inline">POST </h5><a href="#"> /users</a>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            Add a new user to the data base.<br>
+                            <pre class="border">
+                                <strong>Body</strong>
+                                <code class="json">
+                                    {
+                                        "name":"David",
+                                        "email":"David@gmail.com",
+                                        "password":"123456"
+                                    }
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div id="login" class="card mb-4">
+                        <div class="card-header">
+                            <span>
+                                <h5 class="d-inline">POST </h5><a href="#"> /users/login</a>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            User login, if the email and password are correct the server will respond with a token,
+                            <pre class="border">
+                            <strong>Body</strong>
+                            <code class="json">
+                                {
+                                    "email":"David@gmail.com",
+                                    "password":"123456"
+                                }
+                            </code>
+                        </pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="toys">
+                    <h2>Toys</h2>
+                    <div id="get_all_toys" class="card mb-4">
+                        <div class="card-header">
+                            <span>
+                                <h5 class="d-inline">Get </h5><a href="#">/toys</a>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            Get a list of all the toys, will present 10 results per page.
+                        </div>
+                    </div>
+                    <div id="search" class="card mb-4">
+                        <div class="card-header">
+                            <span>
+                                <h5 class="d-inline">Get </h5><a
+                                    href="http://localhost:3000/toys/search/?s=blocks">/toys/search?s=blocks</a>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            search for a toy by searching follwing name or info after the "s=", it will present 10
+                            results per page.
+                        </div>
+                    </div>
+                    <div id="search_by_category" class="card mb-4">
+                        <div class="card-header">
+                            <span>
+                                <h5 class="d-inline">Get </h5><a
+                                    href="http://localhost:3000/toys/category/:category">/toys/category/Action</a>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            Get a list of all the toys in toys category, it will present 10 results per page
+                        </div>
+                    </div>
+                    <div id="get_toy_by_id" class="card mb-4">
+                        <div class="card-header">
+                            <span>
+                                <h5 class="d-inline">Get </h5><a
+                                    href="http://localhost:3000/toys/single/:_idToy">/toys/single/:_idToy</a>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            Get a toy by id
+                        </div>
+                    </div>
+                    <div id="get_min_max" class="card mb-4">
+                        <div class="card-header">
+                            <span>
+                                <h5 class="d-inline">Get </h5><a
+                                    href="http://localhost:3000/toys/price/?min=25&max=500">/toys/price/?min=25&max=500</a>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            Get a list of the toys by min & max , it will present 10 results per page.
+                        </div>
+                    </div>
+                    <div id="add_toy" class="card mb-4">
+                        <div class="card-header">
+                            <span>
+                                <h5 class="d-inline">POST </h5><a href="http://localhost:3000/toys"> /toys</a>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            Add a new toy to the data base, You need a token for this query<br>
+                            <pre class="border">
+                                <strong>Body</strong>
+                                <code class="json">
+                                    {
+                                     "name": "Doll",
+                                    "description": "Classic doll with various accessories and outfits",
+                                    "category": "Dolls",
+                                    "image": "url_to_doll.jpg",
+                                    "price":40 
+                                    }
+                                   
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div id="update_toy" class="card mb-4">
+                        <div class="card-header">
+                            <span>
+                                <h5 class="d-inline">POST </h5><a
+                                    href="http://localhost:3000/toys/{editId}"> /toys/{editId}</a>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            Update a toy in the data base,You need a token for this query.<br>
+                            <pre class="border">
+                                <strong>Body</strong>
+                                <code class="json">
+                                    {
+                                        "name": "Doll",
+                                       "description": "Classic doll with various accessories and outfits",
+                                       "category": "Dolls",
+                                       "image": "url_to_doll.jpg",
+                                       "price":35 
+                                       }
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div id="delete_toy" class="card mb-4">.
+                        <div class="card-header">
+                            <span>
+                                <h5 class="d-inline">DELETE </h5><a
+                                    href="http://localhost:3000/toys/{delId}"> /toys/{delId}</a>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            Delete a toy from the data base, You need a token for this query. </div>
+                    </div>
+        </div>
+        </section>
+
+
+        </main>
+    </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
